@@ -16,7 +16,7 @@ stream merging, MP3 extraction and every site yt-dlp supports.
 | | | | |
 | :---: | :---: | :---: | :---: |
 | <img src="docs/screenshot-1-paste.png" width="190" alt="Paste a link"> | <img src="docs/screenshot-2-choose.png" width="190" alt="Choose a quality"> | <img src="docs/screenshot-3-downloading.png" width="190" alt="Downloading"> | <img src="docs/screenshot-4-saved.png" width="190" alt="Saved"> |
-| Paste a link | Pick a quality | Watch it download | Saved on the phone |
+| Paste a link | Pick a quality | Download | Saved on the phone |
 
 ## Install
 
