@@ -1,0 +1,6 @@
+# Renders the Sponsor button on the repo. Enable GitHub Sponsors on the account
+# first, or swap in one of the commented platforms below.
+github: [tnjappsss]
+# ko_fi: yourhandle
+# liberapay: yourhandle
+# custom: ["https://..."]

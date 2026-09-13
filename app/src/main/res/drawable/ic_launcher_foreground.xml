@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- equalizer bars, centred in the 72x72 safe zone -->
+    <path android:fillColor="#FF0033" android:pathData="M36,58h7v14h-7z"/>
+    <path android:fillColor="#F4F2EC" android:pathData="M47,44h7v28h-7z"/>
+    <path android:fillColor="#25F4EE" android:pathData="M58,36h7v36h-7z"/>
+    <path android:fillColor="#FE2C55" android:pathData="M69,50h7v22h-7z"/>
+    <!-- down-arrow nub -->
+    <path android:fillColor="#F4F2EC" android:pathData="M32,76h44v5h-44z"/>
+</vector>

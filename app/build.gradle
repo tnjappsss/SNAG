@@ -1,0 +1,150 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.chaquo.python'
+}
+
+// Release signing is read from keystore.properties, which is NOT in version control.
+// See README: you generate the keystore yourself so the signing key stays yours.
+// local.properties is not exposed to Gradle as project properties, so read it.
+def localProps = new Properties()
+def localPropsFile = rootProject.file("local.properties")
+if (localPropsFile.exists()) { localProps.load(new FileInputStream(localPropsFile)) }
+
+// AdMob IDs. Real ones go in local.properties, which is gitignored:
+//   admob.appId=ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY
+//   admob.bannerId=ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY
+// The fallbacks are Google's official test IDs. They always serve a test ad and
+// never count as traffic on a real account, so leaving them in place is safe.
+def admobAppId = localProps.getProperty("admob.appId")
+                 ?: "ca-app-pub-3940256099942544~3347511713"
+def admobBannerId = localProps.getProperty("admob.bannerId")
+                    ?: "ca-app-pub-3940256099942544/6300978111"
+// Optional: your phone's hashed device ID, so real ad units still serve test ads
+// on it. AdMob prints it to logcat on first run.
+def admobTestDevice = localProps.getProperty("admob.testDeviceId") ?: ""
+
+def keystorePropsFile = rootProject.file("keystore.properties")
+def keystoreProps = new Properties()
+if (keystorePropsFile.exists()) { keystoreProps.load(new FileInputStream(keystorePropsFile)) }
+
+// The ffmpeg payload is generated, not committed. Fail with a useful message
+// rather than shipping an APK whose YouTube downloads silently cannot merge.
+def ffmpegAsset = file("src/main/assets/ffmpeg-arm64-v8a.zip")
+gradle.taskGraph.whenReady {
+    if (!ffmpegAsset.exists()) {
+        throw new GradleException(
+            "Missing ${ffmpegAsset} - run: python tools/package_ffmpeg.py")
+    }
+}
+
+android {
+    namespace 'com.snag.app'
+    compileSdk 35
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    signingConfigs {
+        release {
+            if (keystorePropsFile.exists()) {
+                // rootProject.file so the path is relative to the repo root, not the
+                // app module, and absolute paths are passed through unchanged.
+                storeFile rootProject.file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                // PKCS12 (what keytool produces by default) uses one password for the
+                // store and the key, so fall back to storePassword when keyPassword is
+                // blank. Groovy treats an empty string as falsy, so ?: covers both.
+                keyPassword keystoreProps['keyPassword'] ?: keystoreProps['storePassword']
+
+                // v1 (JAR signing) is legacy and unnecessary above API 24. v3 adds key
+                // rotation support, so the signing key can be replaced later without
+                // orphaning existing installs.
+                enableV1Signing false
+                enableV2Signing true
+                enableV3Signing true
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.snag.app"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        manifestPlaceholders = [admobAppId: admobAppId]
+        buildConfigField "String", "ADMOB_BANNER_ID", "\"${admobBannerId}\""
+        buildConfigField "String", "ADMOB_TEST_DEVICE", "\"${admobTestDevice}\""
+        buildConfigField "boolean", "ADMOB_USING_TEST_IDS",
+                         (admobBannerId.startsWith("ca-app-pub-3940256099942544")).toString()
+
+        // Chaquopy only ships brotli/pycryptodomex wheels for 64-bit on Python 3.12,
+        // and 32-bit-only Android phones are long gone. arm64-v8a covers every
+        // modern device. (Add "x86_64" here if you want to run it in an emulator.)
+        ndk {
+            abiFilters "arm64-v8a"
+        }
+
+        python {
+            // Chaquopy needs a local CPython 3.10-3.14 to run pip at build time.
+            // It looks on PATH by default; set chaquopy.python in local.properties
+            // (or gradle.properties) if yours is somewhere else.
+            def declaredPython = localProps.getProperty("chaquopy.python")
+                                ?: project.findProperty("chaquopy.python")
+            if (declaredPython) { buildPython declaredPython.toString() }
+            version "3.12"
+            pip {
+                install "yt-dlp[default]"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            if (keystorePropsFile.exists()) { signingConfig signingConfigs.release }
+            // R8 is left off deliberately: it would save well under 1 MB of a ~59 MB
+            // APK dominated by the Python runtime and ffmpeg, while risking the
+            // reflection Chaquopy relies on.
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packaging {
+        jniLibs {
+            // ffmpeg/ffprobe must be real files on disk to be exec'able, so the
+            // installer has to extract them rather than mmap them from the APK.
+            useLegacyPackaging = true
+        }
+    }
+
+    androidResources {
+        // the ffmpeg payload is already a deflated zip; don't pay to recompress it
+        noCompress += "zip"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
+
+    // Ads, plus the consent SDK. UMP is not optional for an EU publisher: without
+    // a consent decision the ads SDK must not serve personalised ads.
+    // Pinned to 24.x deliberately: play-services-ads 25.x is compiled with Kotlin
+    // 2.3 metadata, which Kotlin 2.1.20 cannot read. Bumping Kotlin to 2.4 would
+    // unsettle a working AGP/Chaquopy combination for no gain on a banner ad.
+    implementation 'com.google.android.gms:play-services-ads:24.9.0'
+    implementation 'com.google.android.ump:user-messaging-platform:4.0.0'
+}
