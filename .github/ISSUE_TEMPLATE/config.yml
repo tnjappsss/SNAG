@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or idea
+    url: https://github.com/tnjappsss/SNAG/discussions
+    about: Anything that is not a bug or a broken site belongs in Discussions.
+  - name: XDA thread
+    url: https://xdaforums.com/t/app-7-0-open-source-snag-yt-dlp-and-ffmpeg-in-an-apk-downloads-run-on-your-phone.4803158/
+    about: Support and discussion on XDA.
+  - name: Reddit
+    url: https://www.reddit.com/r/SNAG_official
+    about: r/SNAG_official.

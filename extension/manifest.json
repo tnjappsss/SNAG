@@ -1,0 +1,108 @@
+{
+  "manifest_version": 3,
+  "name": "Send to SNAG",
+  "version": "1.1",
+  "icons": {
+    "128": "logo.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "logo.png",
+        "archivo.woff2",
+        "jetbrains-mono.woff2"
+      ],
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.tiktok.com/*",
+        "https://tiktok.com/*",
+        "https://x.com/*",
+        "https://www.x.com/*",
+        "https://twitter.com/*",
+        "https://www.twitter.com/*",
+        "https://www.instagram.com/*",
+        "https://instagram.com/*",
+        "https://vimeo.com/*",
+        "https://www.vimeo.com/*",
+        "https://www.twitch.tv/*",
+        "https://twitch.tv/*",
+        "https://clips.twitch.tv/*",
+        "https://soundcloud.com/*",
+        "https://www.soundcloud.com/*",
+        "https://www.reddit.com/*",
+        "https://reddit.com/*"
+      ]
+    }
+  ],
+  "description": "Send the current page or a link to the SNAG Windows app. Choose video quality or MP3 in SNAG.",
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "https://www.youtube.com/*",
+    "https://www.tiktok.com/*",
+    "https://tiktok.com/*",
+    "https://x.com/*",
+    "https://www.x.com/*",
+    "https://twitter.com/*",
+    "https://www.twitter.com/*",
+    "https://www.instagram.com/*",
+    "https://instagram.com/*",
+    "https://vimeo.com/*",
+    "https://www.vimeo.com/*",
+    "https://www.twitch.tv/*",
+    "https://twitch.tv/*",
+    "https://clips.twitch.tv/*",
+    "https://soundcloud.com/*",
+    "https://www.soundcloud.com/*",
+    "https://www.reddit.com/*",
+    "https://reddit.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.tiktok.com/*",
+        "https://tiktok.com/*",
+        "https://x.com/*",
+        "https://www.x.com/*",
+        "https://twitter.com/*",
+        "https://www.twitter.com/*",
+        "https://www.instagram.com/*",
+        "https://instagram.com/*",
+        "https://vimeo.com/*",
+        "https://www.vimeo.com/*",
+        "https://www.twitch.tv/*",
+        "https://twitch.tv/*",
+        "https://clips.twitch.tv/*",
+        "https://soundcloud.com/*",
+        "https://www.soundcloud.com/*",
+        "https://www.reddit.com/*",
+        "https://reddit.com/*"
+      ],
+      "js": [
+        "site-rules.js",
+        "youtube.js"
+      ],
+      "css": [
+        "youtube.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Send to SNAG",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "logo.png"
+    }
+  }
+}

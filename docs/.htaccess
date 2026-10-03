@@ -1,0 +1,17 @@
+# Serve the APK as a download rather than letting a phone browser try to open it.
+AddType application/vnd.android.package-archive .apk
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.apk$">
+    Header set Content-Disposition "attachment"
+  </FilesMatch>
+  # Fonts and images only change by changing filename, so cache them hard.
+  <FilesMatch "\.(woff2|png)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Pages and the stylesheet are edited in place under the same names, so they must
+  # be revalidated. Without this a returning visitor keeps the old CSS against new HTML.
+  <FilesMatch "\.(html|css|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

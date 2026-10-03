@@ -1,0 +1,8 @@
+# Keep LF in the repo. gradlew in particular must not gain CRLF or it fails to
+# run on Linux and CI with a bad interpreter error.
+* text=auto eol=lf
+*.jar binary
+*.png binary
+*.zip binary
+*.so binary
+gradlew text eol=lf

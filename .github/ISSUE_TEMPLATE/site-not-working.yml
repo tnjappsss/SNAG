@@ -1,0 +1,56 @@
+name: A site stopped working
+description: A link that used to download now fails, or a site was never supported
+labels: ["extractor"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        yt-dlp is built into the APK and cannot update itself, so when a site
+        changes something, SNAG stays broken until a new release ships. Most
+        reports here are that, not a bug in the app.
+
+  - type: input
+    id: url
+    attributes:
+      label: The link
+      description: Paste the exact link. Remove it if it is private and describe the site instead.
+      placeholder: https://www.youtube.com/watch?v=...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where did it fail
+      options:
+        - While it said "Checking"
+        - After choosing a quality, before any progress
+        - Partway through the download
+        - It finished but the file is broken
+    validations:
+      required: true
+
+  - type: textarea
+    id: error
+    attributes:
+      label: The error text
+      description: Copy the red box exactly. The wording after the colon is the part that matters.
+      render: text
+    validations:
+      required: true
+
+  - type: dropdown
+    id: quality
+    attributes:
+      label: Which quality button
+      options: ["Best", "1080p", "720p", "480p", "MP3"]
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: SNAG version
+      placeholder: "1.0"
+    validations:
+      required: true

@@ -1,0 +1,52 @@
+name: Bug report
+description: The app crashes, hangs, or behaves wrongly
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If a particular link fails to download, use the other template instead.
+        This one is for the app itself misbehaving.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what happened instead.
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Phone and Android version
+      placeholder: Pixel 8, Android 15
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: SNAG version
+      placeholder: "1.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs, if you can get them
+      description: |
+        With USB debugging on and the phone plugged into a computer:
+        `adb logcat -d -s snag:V AndroidRuntime:E`
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: My phone is arm64-v8a and Android 7.0 or newer
+          required: true
+        - label: SNAG was on screen the whole time, not in the background
+          required: true

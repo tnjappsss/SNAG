@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SNAG - Free Video Downloader for Windows and Android</title>
+<meta name="description" content="SNAG is a free, open-source video downloader for Windows and Android. Save videos from YouTube, TikTok, X and around a thousand other sites. yt-dlp and FFmpeg are bundled in, so downloads run on your own device and nothing is uploaded.">
+<meta name="theme-color" content="#0a0b0a">
+<meta property="og:title" content="SNAG">
+<meta property="og:description" content="Save videos from YouTube, TikTok, X and about a thousand other sites, on your Android phone or your Windows PC.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://snagapp.store/">
+<meta property="og:image" content="https://snagapp.store/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="style.css?v=5">
+</head>
+
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><img src="logo.png" alt="" width="26" height="26">SNAG</a>
+  <div class="links">
+    <a class="show" href="#screenshots">Screenshots</a>
+    <a class="show" href="#install">Install</a>
+    <a class="show" href="#faq">Questions</a>
+    <a class="show" href="#verify">Checksums</a>
+    <a class="pill" href="https://www.reddit.com/r/SNAG_official/">Reddit</a>
+    <a class="pill" href="https://github.com/tnjappsss/SNAG">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <img class="glyph" src="logo.png" alt="SNAG" width="512" height="512">
+  <p class="eyebrow">Open source &middot; GPL-3.0 &middot; No server</p>
+  <h1>SNAG <span class="h1sub">A free video downloader for Windows and Android</span></h1>
+  <p class="lead">Save videos from YouTube, TikTok, X and around a thousand other
+    sites. <b>The download happens on your own device</b> and the file never leaves it.</p>
+  <div class="getrow">
+    <a class="dl" href="https://github.com/tnjappsss/SNAG/releases/download/v1.5/SNAG-1.5-arm64-v8a.apk"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+      Android APK &middot; 61.5 MB</a>
+    <a class="dl alt" href="https://github.com/tnjappsss/SNAG/releases/download/v1.5/SNAG-1.5-windows-x64.exe"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+      Windows EXE &middot; 120 MB</a>
+  </div>
+  <div class="chips">
+    <span class="chip">Android 7.0+ &middot; arm64</span>
+    <span class="chip">Windows 10 / 11 &middot; 64-bit</span>
+    <span class="chip">free &middot; GPL-3.0</span>
+    <span class="chip">no account</span>
+    <span class="chip">browser extension</span>
+  </div>
+  <p class="also">Optional extra for Windows:
+    <a href="https://github.com/tnjappsss/SNAG/releases/download/v1.5/SNAG-extension-1.1.zip">the browser extension</a> (153 KB), which puts a SNAG button on
+    YouTube, TikTok, X and six more sites. <a href="#faq">How to load it</a>.</p>
+  <p class="hint">Both files are large, so give them a moment. Chrome asks you to
+    confirm an APK download: tap <b>Download anyway</b>. Windows SmartScreen asks about the
+    exe: choose <b>More info</b>, then <b>Run anyway</b>. Checksums for both are
+    <a href="#verify">further down</a>.</p>
+</div></header>
+
+<main>
+<div class="marquee"><div class="track">
+  <div class="set">
+    <span>YouTube <i>&rarr;</i></span><span>TikTok <i>&rarr;</i></span><span>X / Twitter <i>&rarr;</i></span>
+    <span>Instagram <i>&rarr;</i></span><span>Reddit <i>&rarr;</i></span><span>SoundCloud <i>&rarr;</i></span>
+    <span>Vimeo <i>&rarr;</i></span><span>Twitch <i>&rarr;</i></span><span>Pinterest <i>&rarr;</i></span>
+    <span>Dailymotion <i>&rarr;</i></span><span>Bandcamp <i>&rarr;</i></span><span>about 1,000 more <i>&rarr;</i></span>
+  </div>
+  <div class="set" aria-hidden="true">
+    <span>YouTube <i>&rarr;</i></span><span>TikTok <i>&rarr;</i></span><span>X / Twitter <i>&rarr;</i></span>
+    <span>Instagram <i>&rarr;</i></span><span>Reddit <i>&rarr;</i></span><span>SoundCloud <i>&rarr;</i></span>
+    <span>Vimeo <i>&rarr;</i></span><span>Twitch <i>&rarr;</i></span><span>Pinterest <i>&rarr;</i></span>
+    <span>Dailymotion <i>&rarr;</i></span><span>Bandcamp <i>&rarr;</i></span><span>about 1,000 more <i>&rarr;</i></span>
+  </div>
+</div></div>
+
+<section id="screenshots"><div class="wrap">
+  <h2>Paste. Pick. Done.</h2>
+  <p class="say">The same web UI runs on both. On Android files land in
+    <code>Android/data/com.snag.app/files/SNAG/</code> and a share button beside each
+    download sends them to your gallery or any other app. On Windows they go to a
+    <code>snag_downloads</code> folder next to the exe.</p>
+  <div class="shots">
+    <figure><img src="screenshot-1-paste.png" alt="Pasting a link into SNAG" loading="lazy" width="540" height="1126"><figcaption>Paste a link</figcaption></figure>
+    <figure><img src="screenshot-2-choose.png" alt="Choosing a quality" loading="lazy" width="540" height="1126"><figcaption>Pick a quality</figcaption></figure>
+    <figure><img src="screenshot-3-downloading.png" alt="A download in progress" loading="lazy" width="540" height="1126"><figcaption>Downloading</figcaption></figure>
+    <figure><img src="screenshot-4-saved.png" alt="A finished download" loading="lazy" width="540" height="1126"><figcaption>Saved on the phone</figcaption></figure>
+</div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Built on the real thing</h2>
+  <div class="fgrid">
+    <div class="f"><p class="n">#01</p><h3>Real yt-dlp, bundled</h3>
+      <p>SNAG ships the genuine yt-dlp, not a reimplementation, so it reaches the same sites yt-dlp does. Which ones work can change when a site updates.</p></div>
+    <div class="f"><p class="n">#02</p><h3>Real FFmpeg, on-device</h3>
+      <p>HD stream merging and MP3 extraction run locally through bundled FFmpeg. Nothing is uploaded anywhere.</p></div>
+    <div class="f"><p class="n">#03</p><h3>Nothing leaves your device</h3>
+      <p>No account and no server. The download happens on your own phone or PC and the file never leaves it.</p></div>
+    <div class="f"><p class="n">#04</p><h3>Share and go</h3>
+      <p>On Android, share a link to SNAG straight from YouTube, TikTok or X. On Windows, a browser extension adds a SNAG button to the page you are watching.</p></div>
+    <div class="f"><p class="n">#05</p><h3>Pick your quality</h3>
+      <p>Paste a link and choose the format, from full HD video down to audio-only MP3.</p></div>
+    <div class="f hot"><p class="n">#06</p><h3>One program, phone and PC</h3>
+      <p>The same code runs in both. On Android it is an APK; on Windows a single exe with Python and FFmpeg inside it, so there is nothing to install.</p></div>
+  </div>
+</div></section>
+
+<section id="install"><div class="wrap">
+  <h2>Installing it</h2>
+  <p class="say">SNAG is not on Google Play, and never will be: YouTube developer policy
+    and Play rules bar yt-dlp style apps. That is the only reason these are plain files
+    and not store links.</p>
+  <div class="split" style="margin-top:48px">
+    <div>
+      <h3 class="plat">Android</h3>
+      <div class="steps">
+        <div class="step"><span class="k">1</span><div><h3>Download the APK</h3>
+          <p>Chrome warns about APK files. Tap <b>Download anyway</b>. Use Chrome rather than
+            a browser built into another app, which blocks downloads.</p></div></div>
+        <div class="step"><span class="k">2</span><div><h3>Allow installs</h3>
+          <p>Android asks to allow installs from this source once. Allow it and continue.</p></div></div>
+        <div class="step"><span class="k">3</span><div><h3>Keep it on screen</h3>
+          <p>Paste a link and pick a quality. Leave SNAG on screen while it downloads, because
+            Android cuts the network to apps in the background.</p></div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="plat">Windows</h3>
+      <div class="steps">
+        <div class="step"><span class="k">1</span><div><h3>Download the exe</h3>
+          <p>One file. Python, yt-dlp and FFmpeg are inside it, so nothing else has to be
+            installed and no admin rights are needed.</p></div></div>
+        <div class="step"><span class="k">2</span><div><h3>Run it</h3>
+          <p>SmartScreen warns the first time because the exe is not signed with a paid
+            certificate. Choose <b>More info</b>, then <b>Run anyway</b>.</p></div></div>
+        <div class="step"><span class="k">3</span><div><h3>Use the browser tab</h3>
+          <p>It opens the same UI at <code>localhost:8765</code> and sits in the system tray
+            while it runs. Right-click the tray icon to change the download folder or quit.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2>Questions</h2>
+  <div class="qa">
+    <details><summary>Where do my downloads go?</summary>
+      <p>On Windows, a <code>snag_downloads</code> folder next to the exe, or wherever you
+        point it with <b>Choose download folder</b> in the tray menu. On Android,
+        <code>Android/data/com.snag.app/files/SNAG/</code>, which Android 11 and later hide from
+        the Files app, so use the share button beside a finished download to send it to your
+        gallery or any other app.</p></details>
+    <details><summary>Can I get just the audio as an MP3?</summary>
+      <p>Yes. Pick <b>MP3</b> instead of a resolution. Both downloads carry their own copy of
+        FFmpeg, so this works without installing anything else.</p></details>
+    <details><summary>Where does SNAG go after I run it on Windows?</summary>
+      <p>Into the system tray, next to the clock. The page in your browser is just its
+        interface. Right-click the tray icon to reopen SNAG, open or change the download
+        folder, or quit. Quitting from there is what stops it.</p></details>
+    <details><summary>Why do my Android downloads stall when I switch apps?</summary>
+      <p>Android cuts network access to apps in the background, which surfaces as a DNS error
+        from yt-dlp. Keep SNAG on screen until the download finishes. It holds the screen awake
+        to help.</p></details>
+    <details><summary>A site stopped working. What now?</summary>
+      <p>Sites change how they deliver video and yt-dlp is bundled in, so it cannot update
+        itself. When something breaks it gets fixed in a later release. Report it on
+        <a href="https://github.com/tnjappsss/SNAG/issues">GitHub issues</a> or
+        <a href="https://www.reddit.com/r/SNAG_official/">r/SNAG_official</a> and check you are
+        on the newest version first.</p></details>
+    <details><summary>What is the browser extension for?</summary>
+      <p>It adds a SNAG button to YouTube, TikTok, X, Instagram, Vimeo, Twitch, SoundCloud and
+        Reddit so you can start a download without copying the link. It is in the release as
+        <a href="https://github.com/tnjappsss/SNAG/releases/download/v1.5/SNAG-extension-1.1.zip"><code>SNAG-extension-1.1.zip</code></a>: unzip it somewhere permanent,
+        open <code>chrome://extensions</code>, turn on
+        Developer mode and choose <b>Load unpacked</b>. It talks only to SNAG on your own machine,
+        and only on those sites. It is optional; SNAG works perfectly well without it.</p></details>
+    <details><summary>Does it cost anything, and are there ads?</summary>
+      <p>It is free and open source under GPL-3.0, with no account and no subscription. The
+        Android app shows one small banner ad. The Windows build has no ads at all.</p></details>
+    <details><summary>Windows says the file is unsafe. Is it?</summary>
+      <p>SmartScreen warns about any program not signed with a paid certificate, and some
+        antivirus engines flag the kind of bundle the exe is built with. Compare the SHA-256
+        against <a href="#verify">the one published here</a>: if it matches, you have the file
+        that was built from this source.</p></details>
+    <details><summary>Why is it not on Google Play or the Microsoft Store?</summary>
+      <p>YouTube's developer policy forbids apps that download videos for offline playback, and
+        Play separately bars apps that induce copyright infringement. Every yt-dlp based app is
+        distributed outside the stores for the same reason.</p></details>
+  </div>
+</div></section>
+
+<section class="alt" id="verify"><div class="wrap">
+  <h2>Check it is the real build</h2>
+  <p class="say">If you want to confirm a download is genuine, check its hash against
+    the one below. For the APK you can also check the certificate it was signed with; every
+    release since the first has used the same key.</p>
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i></div>
+<pre><b>$ sha256sum SNAG-1.5-arm64-v8a.apk</b>
+<u>4d1e712e332050bfdf84b2f0da3ac9e446d4c751bf23c08d929a7b59952810f5</u>
+
+<b>$ apksigner verify --print-certs SNAG-1.5-arm64-v8a.apk</b>
+Signer #1 certificate SHA-256:
+<u>2039afdc2d7f034f90e948aa76bd50988dccd618cf31d1200692961c82258d11</u>
+
+<b>$ sha256sum SNAG-1.5-windows-x64.exe</b>
+<u>a832b67d1e329a0de0cecac571742e915e114f7514679cd4b72c9c5b39e26607</u>
+
+<b>$ sha256sum SNAG-extension-1.1.zip</b>
+<u>95bbefec4db4f8590d3fed6219edc5f6cb5ec13a0f89f868392a5af39108d61c</u></pre>
+  </div>
+  <p class="fine">Android 7.0 (API 24) or later, arm64-v8a only: that is essentially every
+    phone sold in the last decade, but not 32-bit devices, emulators or ChromeOS.
+    Windows 10 or 11, 64-bit. Windows 8.1 works; Windows 7 does not, because Python
+    dropped it.</p>
+</div></section>
+
+</main>
+
+<footer><div class="wrap">
+  <span>SNAG &middot; GPL-3.0 &middot; bundles FFmpeg, itself GPLv3</span>
+  <nav>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="https://www.reddit.com/r/SNAG_official/">Reddit</a>
+    <a href="https://github.com/tnjappsss/SNAG">Source</a>
+    <a href="https://github.com/tnjappsss/SNAG/releases">Release notes</a>
+    <a href="https://github.com/tnjappsss/SNAG/issues">Report a problem</a>
+    <a href="https://xdaforums.com/t/app-7-0-open-source-snag-yt-dlp-and-ffmpeg-in-an-apk-downloads-run-on-your-phone.4803158/">XDA</a>
+    <a href="https://github.com/tnjappsss/SNAG/blob/main/docs/THIRD_PARTY.md">Licences</a>
+  </nav>
+</div></footer>
+
+</body></html>
